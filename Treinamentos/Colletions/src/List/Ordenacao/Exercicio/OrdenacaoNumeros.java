@@ -1,6 +1,7 @@
-package Map.Ordenacao.Exercicio;
+package List.Ordenacao.Exercicio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OrdenacaoNumeros {
@@ -12,8 +13,11 @@ public class OrdenacaoNumeros {
     public void adicionarNumero(int numero) {
         numerosList.add(numero);
     }
-    public void ordenarAscendente() {
+    public List<Integer> ordenarAscendente() {
         List<Integer> numerosAscendente = new ArrayList<>(this.numerosList);
+        if (!numerosList.isEmpty()){
+            Collections.sort(numerosAscendente);
+        } return numerosAscendente;
     }
 
 }
