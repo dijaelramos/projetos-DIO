@@ -1,18 +1,13 @@
-## Getting Started
+# Eletronicos_DIO
+Projetos Finais da DIO com Java usando API Rest usando Spring WebFlux e usando o banco DynamoDb localmente para armazenar nossos dados e realizar testes unitários da sua API com Junit e como gerar documentações simples por meio do Postman e também do Swagger.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+## Executar dynamo: 
 
-The workspace contains two folders by default, where:
+ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+ 
+ aws dynamodb list-tables --endpoint-url http://localhost:8000
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+swagger: http://localhost:8080/swagger-ui-eletronicos-reactive-api.html
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
