@@ -17,6 +17,15 @@ public class GlobalExceptionHandler {
         );
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(ClienteJaExistenteException.class)
+    public ResponseEntity<ErrorResponse> handleClienteJaExistenteException(ClienteJaExistenteException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                ex.getMessage(),
+                Instant.now().toEpochMilli()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
         ErrorResponse errorResponse = new ErrorResponse(
