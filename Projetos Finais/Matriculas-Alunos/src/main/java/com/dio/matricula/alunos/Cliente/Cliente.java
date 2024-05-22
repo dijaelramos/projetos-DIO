@@ -1,16 +1,37 @@
 package com.dio.matricula.alunos.Cliente;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
     @Entity
     public class Cliente {
         @Id
+        @Pattern(regexp = "\\d{11}", message = "O CPF deve conter 11 dígitos numéricos")
         private String cpf;
+
+        @NotBlank(message = "O nome completo não pode estar em branco")
+        @Size(min = 2, max = 100, message = "O nome completo deve ter entre 2 e 100 caracteres")
         private String nomeCompleto;
+
+        @NotBlank(message = "O endereço não pode estar em branco")
+        @Size(min = 5, max = 255, message = "O endereço deve ter entre 5 e 255 caracteres")
         private String endereco;
-        private int telefone;
+
+        @NotNull(message = "O telefone não pode estar nulo")
+        private Integer telefone;
+
+        @NotNull(message = "A data de nascimento não pode estar em branco")
+        @Past(message = "A data de nascimento deve ser no passado")
         @Column(columnDefinition = "DATE")
         private LocalDate dataNascimento;
+
+        @NotNull(message = "A data de pagamento não pode estar em branco")
         @Column(columnDefinition = "DATE")
         private LocalDate dataPagamento;
 

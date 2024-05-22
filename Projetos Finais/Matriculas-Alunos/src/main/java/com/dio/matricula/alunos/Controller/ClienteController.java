@@ -1,14 +1,19 @@
 package com.dio.matricula.alunos.Controller;
 
 import com.dio.matricula.alunos.Cliente.Cliente;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
+@Validated
 public class ClienteController {
     @Autowired
     private final ClienteService clienteService;
@@ -17,7 +22,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
     @PostMapping
-    public ResponseEntity<Cliente> adicionarCliente(@RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> adicionarCliente(@Valid @RequestBody Cliente cliente) {
         Cliente novoCliente = clienteService.adicionarCliente(cliente);
         return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
     }
@@ -32,7 +37,7 @@ public class ClienteController {
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
     @PutMapping("/{cpf}")
-    public ResponseEntity<Cliente> atualizarCliente(@PathVariable String cpf, @RequestBody Cliente clienteAtualizado) {
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable String cpf, @Valid @RequestBody Cliente clienteAtualizado) {
         Cliente cliente = clienteService.atualizarCliente(cpf, clienteAtualizado);
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
