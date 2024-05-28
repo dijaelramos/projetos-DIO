@@ -1,0 +1,16 @@
+USE matricula_db;
+SELECT * FROM cliente;
+-- Inserindo um cliente'
+INSERT INTO cliente (cpf, nome_completo, endereco, telefone, data_nascimento, data_pagamento)
+VALUES ('12345678901', 'Fulano de Tal', 'Rua Exemplo, 123', 123456789, '1990-05-15', '2024-05-01');
+-- Atualiza os dados do cliente com CPF '12345678901'
+UPDATE cliente
+SET nome_completo = 'Fulano de Tal Atualizado',
+    endereco = 'Rua Atualizada, 456',
+    telefone = 987654321,
+    data_nascimento = '1990-06-15',
+    data_pagamento = '2024-06-01'
+WHERE cpf = '12345678901';
+-- Deleta o cliente com CPF '12345678901'
+DELETE FROM cliente
+WHERE cpf = '12345678901';
